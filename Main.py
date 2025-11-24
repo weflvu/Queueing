@@ -1,8 +1,7 @@
 #IS324
 import math
-lam = int(input("Enter arrival rate: "))
-mu = int(input("Enter Service rate: "))
 
+#M/M/1
 def mm1(lam,mu):
     # Wq = λ/μ(μ-λ)
     Wq = lam/(mu*(mu-lam))
@@ -32,22 +31,6 @@ def my_factorial(n):
 
 
 def mmk(lam, mu, k):
-    # VALIDATION
-    if lam <= 0:
-        print("Error: λ must be greater than 0.")
-        return
-
-    if mu <= lam:
-        print("Error: μ must be greater than λ.")
-        return
-
-    if k <= 0:
-        print("Error: Number of servers k must be positive.")
-        return
-
-    if lam >= k * mu:
-        print("Error: System is unstable because λ ≥ kμ.")
-        return
 
     a = lam / mu
     rho = lam / (k * mu)
@@ -68,6 +51,14 @@ def mmk(lam, mu, k):
 
 def main_menu():
     while (True):
+        lam = int(input("Enter arrival rate: "))
+        mu = int(input("Enter Service rate: "))
+
+        # VALIDATION
+        if lam <= 0:
+            print("Error: λ must be greater than 0.")
+            return
+
         print("*****************")
         print("****Queueing System Calculator ****")
         print("1- M/M/1 System ")
@@ -79,25 +70,33 @@ def main_menu():
         try :
             choice = int(input("Enter your choice: "))
         except ValueError:
-            print("Invalid choice")
+            print("Invalid choice: you must choose a number from 1-4")
             continue
-        if lam>mu:
-            print("Invalid lambda must be less than mu system not stedy")
-            continue
+
+
         if choice == 1:
+          if mu <= lam:
+             print("Error: μ must be greater than λ, the system isn't steady")
+             return
+
           Wq=mm1(lam,mu)
           print(f"M/M/1 Wating Time Wq: {Wq:.4f}\n")
 
         elif choice == 2:
             k=int(input("Enter number of servers :"))
-
+            if k <= 0:
+                print("Error: Number of servers k must be positive.")
+                return
             if lam>k*mu:
-                print("Invalid lambda must be less than k*mu system not stedy")
+                print("Error: kμ must be greater than λ, the system isn't steady")
                 continue
                 Wq=mmk(lam,mu,k)
                 print(f"M/M/K Wating Time Wq : {Wq:.4f}\n")
 
         elif choice == 3:
+            if mu <= lam:
+                print("Error: μ must be greater than λ, the system isn't steady")
+                return
             Wq=mg1_queue(lam,mu)
             print(f"M/G/1 Wating Time Wq : {Wq:.4f}\n")
         elif choice == 4:
