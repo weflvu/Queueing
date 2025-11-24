@@ -1,4 +1,4 @@
-#IS324
+#IS362
 lam = int(input("Enter arrival rate: "))
 mu = int(input("Enter Service rate: "))
 
@@ -37,4 +37,14 @@ def mm1():
     print(f"Wq (Waiting time in queue) = {Wq:.4f}")
 
 
+
+def mg1_queue(lam, mu):
+    # σ² input
+    sigma2 = float(input("Enter service time variance σ²: "))
+    sigma = sigma2 ** 0.5
+
+    # Wq = [ (λσ)^2 + (λ/μ)^2 ] / [ 2λ(1 - λ/μ) ]
+    Wq = ((lam * sigma)**2 + (lam / mu)**2) / (2 * lam * (1 - lam / mu))
+
+    print(f"\nWq (Waiting time in queue) = {Wq:.4f}")
 main_menu()
