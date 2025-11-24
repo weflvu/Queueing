@@ -3,44 +3,6 @@ import math
 lam = int(input("Enter arrival rate: "))
 mu = int(input("Enter Service rate: "))
 
-def main_menu():
-    while (True):
-        print("*****************")
-        print("****Queueing System Calculator ****")
-        print("1- M/M/1 System ")
-        print("2- M/M/k System ")
-        print("3- M/G/1 System ")
-        print("4- Exit")
-        print("*****************")
-
-        try :
-            choice = int(input("Enter your choice: "))
-        except ValueError:
-            print("Invalid choice")
-            continue
-        if lam>mu:
-            print("Invalid lambda must be less than mu system not stedy")
-            continue
-        if choice == 1:
-          Wq=mm1(lam,mu)
-          print(f"M/M/1 Wating Time Wq: {Wq:.4f}\n")
-
-        elif choice == 2:
-            k=int(input("Enter number of servers :"))
-
-            if lam>k*mu:
-                print("Invalid lambda must be less than k*mu system not stedy")
-                continue
-                Wq=mmk(lam,mu,k)
-                print(f"M/M/K Wating Time Wq : {Wq:.4f}\n")
-
-        elif choice == 3:
-            Wq=mg1_queue(lam,mu)
-            print(f"M/G/1 Wating Time Wq : {Wq:.4f}\n")
-        elif choice == 4:
-            print("exit")
-            break
-
 def mm1(lam,mu):
     # Wq = λ/μ(μ-λ)
     Wq = lam/(mu*(mu-lam))
@@ -103,4 +65,43 @@ def mmk(lam, mu, k):
 
     print("\n--- Results for M/M/k ---")
     print(f"Wq (Waiting time in queue) = {Wq2:.4f}")
+
+def main_menu():
+    while (True):
+        print("*****************")
+        print("****Queueing System Calculator ****")
+        print("1- M/M/1 System ")
+        print("2- M/M/k System ")
+        print("3- M/G/1 System ")
+        print("4- Exit")
+        print("*****************")
+
+        try :
+            choice = int(input("Enter your choice: "))
+        except ValueError:
+            print("Invalid choice")
+            continue
+        if lam>mu:
+            print("Invalid lambda must be less than mu system not stedy")
+            continue
+        if choice == 1:
+          Wq=mm1(lam,mu)
+          print(f"M/M/1 Wating Time Wq: {Wq:.4f}\n")
+
+        elif choice == 2:
+            k=int(input("Enter number of servers :"))
+
+            if lam>k*mu:
+                print("Invalid lambda must be less than k*mu system not stedy")
+                continue
+                Wq=mmk(lam,mu,k)
+                print(f"M/M/K Wating Time Wq : {Wq:.4f}\n")
+
+        elif choice == 3:
+            Wq=mg1_queue(lam,mu)
+            print(f"M/G/1 Wating Time Wq : {Wq:.4f}\n")
+        elif choice == 4:
+            print("exit")
+            break
+
 main_menu()
