@@ -24,7 +24,7 @@ def mg1_queue(lam, mu):
 
     print(f"\nWq (Waiting time in queue) = {Wq:.4f}")
     
-    #----------------------------------
+#----------------------------------
     #m/m/k
     def my_factorial(n):
     result = 1
@@ -78,7 +78,7 @@ def mg1_queue(lam, mu):
     Wq = ((lam * sigma)**2 + (lam / mu)**2) / (2 * lam * (1 - lam / mu))
 
     print(f"\nWq (Waiting time in queue) = {Wq:.4f}")
-    #----------------------------------
+#----------------------------------
     
 def main_menu():
     while (True):
