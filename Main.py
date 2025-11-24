@@ -1,4 +1,5 @@
 #IS362
+import math
 lam = int(input("Enter arrival rate: "))
 mu = int(input("Enter Service rate: "))
 
