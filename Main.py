@@ -62,7 +62,7 @@ def mg1_queue(lam, mu):
     print(f"\nWq (Waiting time in queue) = {Wq:.4f}")
 
  #m/m/k
-    def my_factorial(n):
+def my_factorial(n):
     result = 1
     for i in range(1, n + 1):
         result *= i
