@@ -65,7 +65,7 @@ def main_menu():
             if k <= 0:
                 print("error,Number of servers k must be positive.")
                 return
-            if lam>k*mu:
+            if lam>=k*mu:
                 print("error, mu*k must be greater than lambda, the system isn't steady")
                 continue
             Wq=mmk(lam,mu,k)
