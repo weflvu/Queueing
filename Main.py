@@ -81,5 +81,6 @@ def main_menu():
         elif choice == 4:
             print("exit")
             break
-
+        else:
+            print("Invalid choice you must choose a number from 1-4")
 main_menu()
