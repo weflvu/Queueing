@@ -36,7 +36,7 @@ def main_menu():
         mu = int(input("Enter Service rate: "))
 
         if lam <= 0:
-            print("Error: λ must be greater than 0.")
+            print("Error , lambda must be greater than 0.")
             return
 
         print("*****************")
@@ -50,30 +50,30 @@ def main_menu():
         try :
             choice = int(input("Enter your choice: "))
         except ValueError:
-            print("Invalid choice: you must choose a number from 1-4")
+            print("Invalid choice you must choose a number from 1-4")
             continue
 
         if choice == 1:
           if mu <= lam:
-             print("Error: μ must be greater than λ, the system isn't steady")
+             print("error, mu must be greater than lambda, the system isn't steady")
              return
           Wq=mm1(lam,mu)
           print(f"M/M/1 Wating Time Wq: {Wq:.4f}\n")
 
         elif choice == 2:
-            k=int(input("Enter number of servers :"))
+            k=int(input("enter number of servers :"))
             if k <= 0:
-                print("Error: Number of servers k must be positive.")
+                print("error,Number of servers k must be positive.")
                 return
             if lam>k*mu:
-                print("Error: kμ must be greater than λ, the system isn't steady")
+                print("error, mu*k must be greater than lambda, the system isn't steady")
                 continue
             Wq=mmk(lam,mu,k)
             print(f"M/M/K Wating Time Wq : {Wq:.4f}\n")
 
         elif choice == 3:
             if mu <= lam:
-                print("Error: μ must be greater than λ, the system isn't steady")
+                print("error, mu must be greater than lambda, the system isn't steady")
                 return
             Wq=mg1_queue(lam,mu)
             print(f"M/G/1 Wating Time Wq : {Wq:.4f}\n")
